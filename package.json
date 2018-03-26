@@ -1,7 +1,7 @@
 {
   "name": "node.ucp",
   "version": "1.0.0",
-  "description": "",
+  "description": "A full-fledged isomorphic javascript control panel written on top of nodejs and reactjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
