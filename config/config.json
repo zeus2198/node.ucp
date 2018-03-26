@@ -1,0 +1,10 @@
+{
+  "host" : "127.0.0.1",
+  "user" : "root",
+  "password" : "",
+  "database" : "node.ucp",
+  "databaseAPI" : "mysql.api.js",
+  "hash": "whirlpool",
+  "secret": "Ch@ngeTh!s",
+  "appPort": 3000
+}
