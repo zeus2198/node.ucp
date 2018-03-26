@@ -10,6 +10,9 @@ The code uses ES6's [arrow functions](https://developer.mozilla.org/en-US/docs/W
 I have tried to comment as much as possible to explain the working of the application in the source code, however if things are not clear feel free to ask.
 
 ## Demo
+Login information:
+**Username:** Jonas
+**Password:** test
 [Click here for the demo.](https://node-ucp.fgethell.xyz)
 
 [Click here for the images in-case the demo is not working.](https://imgur.com/a/i90lF)
