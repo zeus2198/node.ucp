@@ -35,7 +35,8 @@ Download the repository manually from the green `Clone or Download` button locat
 npm install
 ```
 Packages installation may take some time.
-4. Open `./config/config.json` file and edit the configuration file as per as  your system settings.
+5. Import the sample database(`./sample-database.sql`) into your MySQL server.
+4. Open `./config/config.json` file and edit the configuration file as per as your system settings.
 ## Starting the application
 **Developer Mode:**
 
