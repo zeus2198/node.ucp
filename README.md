@@ -64,12 +64,13 @@ In production mode, the following things happen:
 * Express's(our web-server API used in the application) [production mode](https://expressjs.com/en/advanced/best-practice-performance.html#set-node_env-to-production) is enabled.
 
 # Artwork
-You can photoshop files of the artwork used in this project from [here](https://github.com/xxxZeus/xxxZeus.github.io/raw/master/node.ucp.artwork.rar)
+You can find the photoshop files of the artwork used in this project from [here](https://github.com/xxxZeus/xxxZeus.github.io/raw/master/node.ucp.artwork.rar)
 
 # Notes
 * The `./src/shared/` directory contains the code common in client and server part so be sure that you do not expose any sensitive information in this section.
 * The application uses [service workers](https://developers.google.com/web/fundamentals/primers/service-workers/) which only works on localhost and https enabled domains, so make sure you are using https protocol with your domain.
 * Protected routes are not rendered on the server-side.
+* To **clear cache**, open `./public/js/sw.js` and edit the version string. Then close all the application tab opened in browser and open the application again. Use this to clear `global.min.css` out of cache when you edit the `global.css` file.
 * **Using different databases:**
 
 The `./src/db/db.api.abstract.js` file contains an [abstract class](http://www.theserverside.com/definition/abstract-class) for our database API, read the comments for method specifications. Then require this file in your custom database api layer and override the abstract methods. See `./src/db/mysql.api.js` file for implementation example. Note that each method should return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
