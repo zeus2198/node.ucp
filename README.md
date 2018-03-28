@@ -82,6 +82,8 @@ You can find the photoshop files of the artwork used in this project from [here]
 
 The `./src/db/db.api.abstract.js` file contains an [abstract class](http://www.theserverside.com/definition/abstract-class) for our database API, read the comments for method specifications. Then require this file in your custom database api layer and override the abstract methods. See `./src/db/mysql.api.js` file for implementation example. Note that each method should return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
+After you are done with writing API for your DB, head to `./config/config.json` and edit `databaseAPI` option to match name of the file containing your DB API layer. The file should be placed in `./src/db/` directory.
+
 * [Getting free SSL certificate and using nginx to reverse proxy a domain to your application.](https://youtu.be/kR06NoSzAXY?t=966)
 * **Serving static files using nginx:**
 
