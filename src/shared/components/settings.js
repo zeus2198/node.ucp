@@ -130,7 +130,7 @@ class Settings extends React.Component {
                 <div className="cont settings-cont">
                     <div className="col-md-12 justify-content-md-center header" onDrop={this.onDrop} onDragOver={this.onDragOver}>
                         <div className='aWrapper'>
-                            <img src={GlobalStore.state.nAvatar ? GlobalStore.state.nAvatar : `/api/avatars/${GlobalStore.state.userID}`} />
+                            <img src={GlobalStore.state.nAvatar ? GlobalStore.state.nAvatar : `/api/avatars/${this.props.staticContext && typeof this.props.staticContext.userID != 'undefined' ? this.props.staticContext.userID : GlobalStore.state.userID}`} />
                             <div className={`uploadingOverlay ${this.state.uploading ? 'uploading' : ''}`}>
                                 <i>Uploading..</i>
                             </div>

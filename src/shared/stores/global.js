@@ -11,8 +11,8 @@ class GlobalStore extends EventEmitter {
     constructor() {
         super();
         this.state = {
-            authenticated: false,           
-            userID: null,//userid of logged in user
+            authenticated: typeof document != 'undefined' && typeof window != 'undefined' && typeof window.userID != 'undefined',           
+            userID: typeof document != 'undefined' && typeof window != 'undefined' && typeof window.userID != 'undefined' ? window.userID : null,//userid of logged in user
             nAvatar: null //new avatar src when a new avatar is uploaded
         };
         this.handleActions = this.handleActions.bind(this);

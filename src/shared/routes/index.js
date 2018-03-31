@@ -30,8 +30,7 @@ export default (props) => {
         const currentRoute = routes.find(r => matchPath(props.location.pathname, r)); // getting current route
         pageWrapperKey = currentRoute ? currentRoute.path : props.location.pathname;
     }
-    else pageWrapperKey = props.location.pathname;
-
+    else pageWrapperKey = props.location.pathname; 
     // to prevent sidebar animation on every route change
     const transformSideBar = props.location.pathname == "/login" ? "Y" : "N";
     return (
@@ -52,7 +51,7 @@ export default (props) => {
                             {
                                 routes.map((route, index) =>
                                     route.protected ?
-                                        <ProtectedRoute key={index} component={route.component} path={route.path} exact={route.exact} title={route.title} />
+                                        <ProtectedRoute key={index} component={route.component} path={route.path} exact={route.exact} title={route.title} userID={props.staticContext ? props.staticContext.userID : null} />
                                         :
                                         <Route key={index} path={route.path} exact={route.exact} render={props => React.createElement(route.component, { ...props, title: route.title })} />
                                 )

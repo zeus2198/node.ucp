@@ -12,8 +12,8 @@ class sideBar extends React.Component {
         super(props);
         this.state = {
             isSideBarOpen: false,
-            authenticated: GlobalStore.state.authenticated,            
-            userID: GlobalStore.state.userID,
+            authenticated:  props.staticContext && typeof props.staticContext.userID != 'undefined' ? true : GlobalStore.state.authenticated,            
+            userID: props.staticContext && typeof props.staticContext.userID != 'undefined' ? props.staticContext.userID : GlobalStore.state.userID,
             btListState: false
         };        
         //for sidebar open/close on small screen
@@ -88,6 +88,17 @@ class sideBar extends React.Component {
                                     <li><Link data-index='2' onClick={this.navItemClick} to="/top/onlineTime">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="navIcon"><i className="fa fa-clock-o"></i></span>&nbsp;&nbsp;Online Time</Link></li>
                                     <li><Link data-index='2' onClick={this.navItemClick} to="/top/races">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="navIcon"><i className="fa fa-trophy"></i></span>&nbsp;&nbsp;Races Won</Link></li>           
                             </ul>
+                            <noscript>
+                            <ul className='top-bt-list open'>
+                                    <li><Link data-index='2' onClick={this.navItemClick} to="/top/score">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="navIcon"><i className="fa fa-star"></i></span>&nbsp;&nbsp;Score</Link></li>
+                                    <li><Link data-index='2' onClick={this.navItemClick} to="/top/cash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="navIcon"><i className="fa fa-usd"></i></span>&nbsp;&nbsp;Cash</Link></li>
+                                    <li><Link data-index='2' onClick={this.navItemClick} to="/top/kills">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="navIcon"><i className="fa fa-hand-rock-o"></i></span>&nbsp;&nbsp;Kills</Link></li>
+                                    <li><Link data-index='2' onClick={this.navItemClick} to="/top/deaths">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="navIcon"><i className="fa fa-wheelchair"></i></span>&nbsp;&nbsp;Deaths</Link></li>
+                                    <li><Link data-index='2' onClick={this.navItemClick} to="/top/kd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="navIcon"><i className="fa fa-hand-spock-o"></i></span>&nbsp;&nbsp;K/D Ratio</Link></li>
+                                    <li><Link data-index='2' onClick={this.navItemClick} to="/top/onlineTime">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="navIcon"><i className="fa fa-clock-o"></i></span>&nbsp;&nbsp;Online Time</Link></li>
+                                    <li><Link data-index='2' onClick={this.navItemClick} to="/top/races">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="navIcon"><i className="fa fa-trophy"></i></span>&nbsp;&nbsp;Races Won</Link></li>           
+                            </ul>
+                            </noscript>
                             <li><Link to="/random" data-index='3' onClick={this.navItemClick} className={this.state.selectedIndex == 3 ? 'active' : ''}><span className="navIcon"><i className="fa fa-ban"></i></span>&nbsp;&nbsp;404</Link></li>
                         </ul>
                     </div>

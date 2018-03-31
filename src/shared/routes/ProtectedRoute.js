@@ -17,11 +17,14 @@ const ProtectedRoute = (pProps) => {
             exact={pProps.exact}
             render={props =>
                 typeof document == "undefined" ? (
-                    <div />
+                    typeof pProps.userID == "undefined" ?
+                        (<div><h2>You are not allowed to view this page</h2></div>) :
+                        React.createElement(pProps.component, { ...props, title: pProps.title })
                 ) : GlobalStore.state.authenticated ?
                         React.createElement(pProps.component, { ...props, title: pProps.title })
                         : (
-                            <div><Redirect to="/" /></div>
+                            <div><h2>You are not allowed to view this page</h2>
+                                <Redirect to="/" /></div>
                         )
             }
         />

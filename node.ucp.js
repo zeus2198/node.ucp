@@ -20,6 +20,7 @@ import routes from './src/shared/routes/routes.js';
 import AppRoutes from './src/shared/routes';
 import APIHandler from './src/api';
 import generateMetaData from './src/utils/generateMetaData';
+import verifySession from './src/utils/verifySession';
 
 const app = Express();
 
@@ -93,11 +94,11 @@ app.get('*', (req, res) => {
     const currentRoute = routes.map(r => ({ match: matchPath(req.url, r), route: r })).find(r => (r.match)); // getting current route
     // checking if current route needs any data to be pre-fetched, if yes then do it:    
     const initialData = currentRoute && currentRoute.route.component.fetchData && currentRoute.route.component.fetchData(req, currentRoute.match.params);
-    Promise.resolve(initialData).then(initialData => {
-        const context = { initialData };
+    Promise.all([initialData, verifySession(req, res, true)]).then(result => {
+        const context = { initialData: result[0], userID: result[1] }; 
         const markup = template
-            .replace('<!--METADATA-->', generateMetaData(currentRoute.route.title(initialData, currentRoute.match.params), currentRoute.route.keywords(initialData, currentRoute.match.params), currentRoute.route.description(initialData, currentRoute.match.params)))
-            .replace("'<!--InitialData-->'", serialize(initialData))
+            .replace('<!--METADATA-->', generateMetaData(currentRoute.route.title(result[0], currentRoute.match.params), currentRoute.route.keywords(result[0], currentRoute.match.params), currentRoute.route.description(result[0], currentRoute.match.params)))
+            .replace("'<!--InitialData-->'", serialize(result[0]) + `; window.userID = ${result[1]}`) //injecting userID too for use in global store
             .replace('<!--REACTSTRING-->', ReactDOMServer.renderToString(<StaticRouter location={req.url} context={context}><Route component={AppRoutes} /></StaticRouter>));
         res.set('Content-Type', 'text/html');
         res.write(markup);     

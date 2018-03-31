@@ -10,10 +10,13 @@ import config from '../config.js';
 
 //reject() => authentication failed
 //reject(true) => some error occured
-export default (req, res) => new Promise((resolve, reject) => {
+//if dontReject = true => 
+//  resolve() => authentication failed
+//  resolve(userid) => authentication successfull
+export default (req, res, dontReject=false) => new Promise((resolve, reject) => {
     //checking if cookies has been set
     if (typeof req.cookies.usr === "undefined" || typeof req.cookies.sessionid === "undefined")
-        return reject();
+        return  (dontReject ? resolve() : reject());
     db.getSessionUID(req.cookies.usr, req.cookies.sessionid).then(
         (uid) => {
             cryptoAsync.hash('SHA256', Buffer.from(req.cookies.sessionid + crypto.randomBytes(64).toString('hex')),
@@ -23,10 +26,10 @@ export default (req, res) => new Promise((resolve, reject) => {
                     res.cookie('sessionid', ssid, {
                         expires: (req.cookies.remember ? new Date(Date.now() + 2592000000) : 0)
                     });
-                    resolve();
+                    dontReject ? resolve(req.cookies.usr) : resolve();
                     db.updateSession(uid, ssid);
                 }
             );
         }
-    ).catch((error) => error == 1 ? reject() : reject(true));
+    ).catch((error) => error == 1 ? (dontReject ? resolve() : reject()) : reject(true));
 });

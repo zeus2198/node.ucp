@@ -16,7 +16,7 @@
     "url": "https://github.com/xxxZeus/node.ucp.git"
   },
   "dependencies": {
-    "@ronomon/crypto-async": "^2.0.1",
+    "@ronomon/crypto-async": "^2.3.0",
     "axios": "^0.16.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
@@ -37,7 +37,7 @@
     "react-router-dom": "^4.1.1",
     "react-transition-group": "^2.2.1",
     "serialize-javascript": "^1.4.0",
-    "sharp": "^0.20.0",
+    "sharp": "^0.20.1",
     "webpack": "^3.8.1"
   },
   "devDependencies": {

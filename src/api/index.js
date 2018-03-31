@@ -5,7 +5,6 @@ import Express from 'express';
 
 import indexStats from './indexStats';
 import login from './login';
-import auth from './auth';
 import avatar from './avatar';
 import avatarX50 from './avatarX50';
 import user from './user';
@@ -25,7 +24,6 @@ router.post('/login',  login);
 router.post('/changePwd', changePwd);
 router.post('/avatar/upload', uploadAvatar);
 router.get('/indexStats', indexStats);
-router.get('/auth', auth);
 router.get('/avatars/:id', avatar);
 router.get('/avatars/x50/:id', avatarX50);
 router.get('/users/:id', user);

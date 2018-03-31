@@ -1,5 +1,5 @@
 # node.ucp
-<img src="https://i.imgur.com/lfNxiOT.gif" width="100%">
+<img src="https://i.imgur.com/BEbdNkN.jpg" width="100%">
 
 This is a full-fledged [isomorphic](https://en.wikipedia.org/wiki/Isomorphic_JavaScript) javascript control panel written on top of [nodejs](https://nodejs.org/) and [react](https://reactjs.org/). The purpose of this control panel is to serve as an example or boilerplate code for others as it is fully-fledged and very flexible. I wrote the code to be easily adaptable for different use-cases and database types and structures.
 
@@ -23,6 +23,10 @@ Login information:
 ## Prerequisites
 * [nodejs `v6.11.3` or later](https://nodejs.org/en/)
 * [MySQL](https://www.mysql.com/) version `5.6.5` or later if you wish to use the sample database.
+* If you are using windows, then you need to install windows build tools too for compiling and building some of the depedencies. Install it using the following command:
+```bash
+npm install --global --production windows-build-tools
+```
 
 ## Installing 
 1. Navigate to an empty folder where you want the source code to be placed.
@@ -76,7 +80,7 @@ You can find the photoshop files of the artwork used in this project from [here]
 # Notes
 * The `./src/shared/` directory contains the code common in client and server part so be sure that you do not expose any sensitive information in this section.
 * The application uses [service workers](https://developers.google.com/web/fundamentals/primers/service-workers/) which only works on localhost and https enabled domains, so make sure you are using https protocol with your domain.
-* Protected routes are not rendered on the server-side.
+* ~~Protected routes are not rendered on the server-side.~~
 * To **clear cache**, open `./public/js/sw.js` and edit the version string. Then close all the application tab opened in browser and open the application again. Use this to clear `global.min.css` out of cache when you edit the `global.css` file.
 * **Using different databases:**
 
