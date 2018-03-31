@@ -82,14 +82,15 @@ You can find the photoshop files of the artwork used in this project from [here]
 * The application uses [service workers](https://developers.google.com/web/fundamentals/primers/service-workers/) which only works on localhost and https enabled domains, so make sure you are using https protocol with your domain.
 * ~~Protected routes are not rendered on the server-side.~~
 * To **clear cache**, open `./public/js/sw.js` and edit the version string. Then close all the application tab opened in browser and open the application again. Use this to clear `global.min.css` out of cache when you edit the `global.css` file.
-* **Using different databases:**
+* [Getting free SSL certificate and using nginx to reverse proxy a domain to your application.](https://youtu.be/kR06NoSzAXY?t=966)
+
+### Using different databases
 
 The `./src/db/db.api.abstract.js` file contains an [abstract class](http://www.theserverside.com/definition/abstract-class) for our database API, read the comments for method specifications. Then require this file in your custom database api layer and override the abstract methods. See `./src/db/mysql.api.js` file for implementation example. Note that each method should return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 After you are done with writing API for your DB, head to `./config/config.json` and edit `databaseAPI` option to match name of the file containing your DB API layer. The file should be placed in `./src/db/` directory.
 
-* [Getting free SSL certificate and using nginx to reverse proxy a domain to your application.](https://youtu.be/kR06NoSzAXY?t=966)
-* **Serving static files using nginx:**
+### Serving static files using nginx
 
 I recommend using nginx to serve static files instead of nodejs. To do so you can add the following location block to your sever block configuration:
 ```
@@ -97,7 +98,7 @@ location /public {
 	alias  /path/to/your/app/public;
 }
 ```
-* If you decide to go with nginx for serving static files you might wanna shift the gzip compression for your application to nginx too. If you do so, which you should, then disable compression on the application side by commenting out the following two lines from `./node.ucp.js` file:
+If you decide to go with nginx for serving static files you might wanna shift the gzip compression for your application to nginx too. If you do so, which you should, then disable compression on the application side by commenting out the following two lines from `./node.ucp.js` file:
 ```javascript
 //./node.ucp.js
 // comment out the following lines if you use nginx for gzip compression
@@ -106,7 +107,7 @@ import compression from 'compression';
 app.use(compression());
 ```
 
-* **Using process manager to make sure app runs forever in production mode:**
+### Using process manager to make sure app runs forever in production mode
  
 In production mode, you might want to have a process manager that can restart application if it crashes, I recommend using [pm2](http://pm2.keymetrics.io/) for this purpose. 
 Install the pm2 using the following command:
