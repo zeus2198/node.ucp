@@ -23,6 +23,10 @@ Login information:
 ## Prerequisites
 * [nodejs `v6.11.3` or later](https://nodejs.org/en/)
 * [MySQL](https://www.mysql.com/) version `5.6.5` or later if you wish to use the sample database.
+* If you are using linux, then you need to install node-gyp. Install it using the following command:
+```bash
+sudo npm install -g node-gyp
+```
 * If you are using windows, then you need to install windows build tools too for compiling and building some of the depedencies. Install it using the following command:
 ```bash
 npm install --global --production windows-build-tools
