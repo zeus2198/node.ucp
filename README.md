@@ -36,7 +36,7 @@ npm install --global --production windows-build-tools
 1. Navigate to an empty folder where you want the source code to be placed.
 2. Clone the repository using the following command:
 ```bash
-git clone https://github.com/xxxZeus/node.ucp 
+git clone https://github.com/zeus2198/node.ucp 
 ```
 OR
 
@@ -79,7 +79,7 @@ In production mode, the following things happen:
 * Express's(our web-server API used in the application) [production mode](https://expressjs.com/en/advanced/best-practice-performance.html#set-node_env-to-production) is enabled.
 
 # Artwork
-You can find the photoshop files of the artwork used in this project from [here](https://github.com/xxxZeus/xxxZeus.github.io/raw/master/node.ucp.artwork.rar)
+You can find the photoshop files of the artwork used in this project from [here](https://github.com/zeus2198/zeus2198.github.io/raw/master/node.ucp.artwork.rar)
 
 # Notes
 * The `./src/shared/` directory contains the code common in client and server part so be sure that you do not expose any sensitive information in this section.
